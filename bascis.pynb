@@ -1,0 +1,25 @@
+# Import the necessary modules.
+import pandas as pd
+
+# Create a dictionary of student data.
+students = {
+    'Name': ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'],
+    'Math': [90, 85, 95, 75, 80],
+    'Science': [85, 90, 80, 95, 75],
+    'English': [95, 80, 90, 85, 90]
+}
+
+# Create a Pandas DataFrame from the dictionary.
+df = pd.DataFrame(students)
+
+# Calculate the total marks for each student.
+df['Total'] = df['Math'] + df['Science'] + df['English']
+
+# Calculate the percentage for each student.
+df['Percentage'] = df['Total'] / 300 * 100
+
+# Calculate the grade for each student.
+df['Grade'] = ['A' if p >= 90 else 'B' if p >= 80 else 'C' if p >= 70 else 'D' for p in df['Percentage']]
+
+# Print the mark sheet.
+print(df)
